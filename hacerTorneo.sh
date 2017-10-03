@@ -11,11 +11,18 @@ if [[ $# -lt 1 ]] ; then
 	exit 1
 fi
 
-if [ ! -e "$1" ]; then
-	echo "el archivo ingresado no existe"
+if [ ! -e "$*" ]; then
+	echo "el archivo $* no existe"
 	exit 1
 fi
 
+file="$*"
+echo "$file"
+
+outFileGoleadores="${file/.*/"_goleadores.csv"}"
+outFilePosiciones="${file/.*/"_posiciones.csv"}"
+
+echo "$outFileGoleadores" 
 awk  	'BEGIN {
 				FS = ":";
 		}
@@ -67,8 +74,8 @@ awk  	'BEGIN {
 		}' temporada2017.txt ;
 
 ##TODO: cambiar el nombre del archivo por el q tiene q ir posta
-sort -t";" -nrk2 goleadoresUnsorted.csv > goleadoresSorted.csv;
-sort -t";" -nrk2 equiposUnsorted.csv > equiposSorted.csv;
+sort -t";" -nrk2 goleadoresUnsorted.csv > "$outFileGoleadores";
+sort -t";" -nrk2 equiposUnsorted.csv > "$outFilePosiciones";
 
 rm goleadoresUnsorted.csv;
 rm equiposUnsorted.csv;
