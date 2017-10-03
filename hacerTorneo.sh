@@ -1,10 +1,27 @@
 #!/bin/bash
 
-## TODO: ver como se usan los parametros en linux
+if [[ $1 == "-h" ]] || [[ $1 == "-?" ]] || [[ $1 == "-help" ]] ;then
+	#hacer cosas de get-help
+	echo "ayudaaa"
+	exit 0
+fi
+
+if [[ $# -lt 1 ]] ; then
+	echo "cantidad de parametros incorrecta"
+	exit 1
+fi
+
+if [ ! -e "$1" ]; then
+	echo "el archivo ingresado no existe"
+	exit 1
+fi
+
 awk  	'BEGIN {
 				FS = ":";
 		}
-		{	equipo1 = $1;
+		{	
+		print "a";
+			equipo1 = $1;
 			goles1 = $2;
 			equipoGoles[ equipo1 ] += goles1; 		
 			for (i = goles1 ; i > 0; i--)
