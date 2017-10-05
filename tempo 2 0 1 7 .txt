@@ -1,1 +1,12 @@
-asfa
+panmas10:4:Luis:Luis:Paolo:Cacho:Los Panchitos FC:1:Tincho
+Bitseller:3:Tomi:Mati:Adrian:Los Vinchita:2:Ficka:Juan
+Los Panchitos FC:1:Damian:Bitseller:2:Lucho:Adrian
+Los Vinchita:0:panmas10:2:Luis:Cacho
+panmas10:3:Paolo:Luis:Luis:Bitseller:3:Adrian:Lucho:Juani
+Los Panchitos FC:5:Tincho:Damian:Tincho:Focka:Niico:Los Vinchita:1:Juan
+
+
+
+
+
+
