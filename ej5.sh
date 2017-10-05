@@ -36,18 +36,21 @@ if ! file "$*" | grep -q text$; then
 fi
 
 file="$*"
-echo "$file"
+#echo "$file"
 
 outFileGoleadores="${file/.*/"_goleadores.csv"}"
 outFilePosiciones="${file/.*/"_posiciones.csv"}"
 
-echo "$outFileGoleadores"
+tr -d 'r' < "$file" > fileLinux.txt
+sed -i '/^$/d' fileLinux.txt
+sed -i '/^[[:space:]]/d' fileLinux.txt
+
+#cat fileLinux.txt
 
 awk  ' BEGIN {
 				FS = ":";
 		} 
 		{	
-		    print "a";
 			equipo1 = $1;
 			goles1 = $2;
 			equipoGoles[ equipo1 ] += goles1; 		
@@ -91,10 +94,15 @@ awk  ' BEGIN {
 			{
 				print equipo " ; " equipoPuntos[ equipo ] " ; "  equipoGoles[ equipo ] > "equiposUnsorted.csv";	
 			}
-		}' "$file" ;
+		}' fileLinux.txt ;
 
-sort -t";" -nrk2 goleadoresUnsorted.csv > "$outFileGoleadores";
-sort -t";" -nrk2,3 equiposUnsorted.csv > "$outFilePosiciones";
+
+echo "Jugador; Goles; Equipo" > "$outFileGoleadores"
+echo "Equipo; Puntos; Goles a favor" > "$outFilePosiciones"
+
+sort -t";" -nrk2 goleadoresUnsorted.csv >> "$outFileGoleadores"
+sort -t";" -nrk2,3 equiposUnsorted.csv >> "$outFilePosiciones"
 
 rm goleadoresUnsorted.csv;
 rm equiposUnsorted.csv;
+rm fileLinux.txt
