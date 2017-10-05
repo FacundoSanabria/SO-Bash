@@ -6,8 +6,8 @@ if [[ $1 == "-h" ]] || [[ $1 == "-?" ]] || [[ $1 == "-help" ]] ;then
 	echo ""
 	echo "ej5.sh debe recibir un archivo(ARCHIVOENTRADA) de texto correspondiente a los partidos acumulados de todas las fechas de un torneo de futbol con el formato: EquipoA:goles:goleadores:EquipoB:goles:goleadores"
 	echo "y lo tranformara en dos archivos cvs:          "
-	echo "    ARCHIVOENTRADA_posiciones.cvs de formato \"Equipo; Puntos; Goles a favor\" con las posiciones finales de la tabla"
-	echo "y   ARCHIVOENTRADA_goleadores.cvs de formato \"Jugador; Goles; Equipo\" con la tabla de goleadores del torneo"
+	echo "    ARCHIVOENTRADA_posiciones.csv de formato \"Equipo; Puntos; Goles a favor\" con las posiciones finales de la tabla"
+	echo "y   ARCHIVOENTRADA_goleadores.csv de formato \"Jugador; Goles; Equipo\" con la tabla de goleadores del torneo"
 	echo ""
 	echo "    -h, -help muestra esta ayuda y finaliza "
 	echo ""
@@ -31,7 +31,7 @@ if [[ ! -s "$*" ]]; then
 fi
 
 if ! file "$*" | grep -q text$; then
-    echo "$* no es un archivo de testo"
+    echo "$* no es un archivo de texto"
     exit 1;
 fi
 
